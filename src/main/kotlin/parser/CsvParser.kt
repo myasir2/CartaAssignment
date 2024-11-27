@@ -24,7 +24,7 @@ class CsvParser(
             employeeName = values[2].trim(),
             awardId = values[3].trim(),
             awardDate = values[4].trim(),
-            quantity = values[5].trim(),
+            awardQuantity = values[5].trim(),
         )
     }
 

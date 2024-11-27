@@ -4,7 +4,7 @@ import java.time.LocalDate
 import kotlin.system.exitProcess
 
 data class Arguments(
-    val fileName: String,
+    val filePath: String,
     val targetDate: LocalDate,
     val quantityPrecision: Int,
 )
@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
     val arguments = parseArgs(args)
     val vestBo = VestBo()
     val enrichedEvents = vestBo.getEnrichedVestedEventsFromCsv(
-        File(arguments.fileName),
+        File(arguments.filePath),
         arguments.targetDate,
         arguments.quantityPrecision
     )
@@ -35,6 +35,12 @@ fun parseArgs(args: Array<String>): Arguments {
     val fileName = args[0]
     val targetDate = LocalDate.parse(args[1])
     val quantityPrecision = if (args.size > 2) args[2].toInt() else 0
+
+    if (quantityPrecision > 6) {
+        println("Quantity precision must be greater than 0 and less than 6")
+
+        exitProcess(1)
+    }
 
     return Arguments(fileName, targetDate, quantityPrecision)
 }

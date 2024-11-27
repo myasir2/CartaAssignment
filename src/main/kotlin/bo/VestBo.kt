@@ -45,7 +45,7 @@ class VestBo(
         return events.filter { it.awardDate.isEqual(targetDate) || it.awardDate.isBefore(targetDate) }
             .groupBy { Triple(it.employeeId, it.employeeName, it.awardId) }
             .map { (key, groupedEvents) ->
-                val quantitySum = groupedEvents.sumOf { it.quantity }
+                val quantitySum = groupedEvents.sumOf { it.awardQuantity }
 
                 EnrichedVestEvent(
                     employeeId = key.first,

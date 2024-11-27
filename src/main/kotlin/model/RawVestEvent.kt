@@ -6,5 +6,5 @@ data class RawVestEvent(
     val employeeName: String,
     val awardId: String,
     val awardDate: String,
-    val quantity: String
+    val awardQuantity: String
 )

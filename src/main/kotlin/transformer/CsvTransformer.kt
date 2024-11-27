@@ -18,7 +18,7 @@ class CsvTransformer: Transformer {
         return rawEvents.map {
             val type = enumValueOrDefault(it.type, VestType.UNKNOWN)
             val date = LocalDate.parse(it.awardDate)
-            val quantity = BigDecimal(it.quantity).setScale(quantityPrecision, RoundingMode.DOWN).toDouble()
+            val quantity = BigDecimal(it.awardQuantity).setScale(quantityPrecision, RoundingMode.DOWN).toDouble()
 
             VestEvent(
                 type = type,
@@ -26,7 +26,7 @@ class CsvTransformer: Transformer {
                 employeeId = it.employeeId,
                 employeeName = it.employeeName,
                 awardId = it.awardId,
-                quantity = if(type == VestType.CANCEL) (quantity * -1) else quantity,
+                awardQuantity = if(type == VestType.CANCEL) (quantity * -1) else quantity,
             )
         }
     }

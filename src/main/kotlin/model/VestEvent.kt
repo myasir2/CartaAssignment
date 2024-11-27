@@ -8,5 +8,5 @@ data class VestEvent(
     val employeeName: String,
     val awardId: String,
     val awardDate: LocalDate,
-    val quantity: Double
+    val awardQuantity: Double
 )

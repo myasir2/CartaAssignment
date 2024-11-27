@@ -42,7 +42,7 @@ object TestDefaults {
             employeeName = employeeName,
             awardId = awardId,
             awardDate = awardDate,
-            quantity = quantity
+            awardQuantity = quantity
         )
     }
 
@@ -60,7 +60,7 @@ object TestDefaults {
             employeeName = employeeName,
             awardId = awardId,
             awardDate = awardDate,
-            quantity = quantity
+            awardQuantity = quantity
         )
     }
 
