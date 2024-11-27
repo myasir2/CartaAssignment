@@ -1,6 +1,7 @@
 import bo.VestBo
 import java.io.File
 import java.time.LocalDate
+import kotlin.system.exitProcess
 
 data class Arguments(
     val fileName: String,
@@ -9,9 +10,13 @@ data class Arguments(
 )
 
 fun main(args: Array<String>) {
-    val args = parseArgs(args)
+    val arguments = parseArgs(args)
     val vestBo = VestBo()
-    val enrichedEvents = vestBo.getEnrichedVestedEventsFromCsv(File(args.fileName), args.targetDate, args.quantityPrecision)
+    val enrichedEvents = vestBo.getEnrichedVestedEventsFromCsv(
+        File(arguments.fileName),
+        arguments.targetDate,
+        arguments.quantityPrecision
+    )
 
     enrichedEvents.forEach { event ->
         with(event) {
@@ -24,7 +29,7 @@ fun parseArgs(args: Array<String>): Arguments {
     if (args.size < 2) {
         println("Please specify a file name and target date")
 
-        System.exit(1)
+        exitProcess(1)
     }
 
     val fileName = args[0]

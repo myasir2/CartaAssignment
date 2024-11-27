@@ -1,9 +1,9 @@
 package transformer
 
-import enumValueOrDefault
 import model.RawVestEvent
 import model.VestEvent
 import model.VestType
+import util.enumValueOrDefault
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.time.LocalDate
